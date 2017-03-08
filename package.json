@@ -1,0 +1,25 @@
+{
+  "name": "octobercms-theme-skeleton",
+  "version": "1.0.0",
+  "description": "Skeleton for octobercms themes",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack",
+    "prod": "NODE_ENV=production webpack",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "node-sass": "^4.5.0",
+    "optimize-css-assets-webpack-plugin": "^1.3.0",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.2",
+    "webpack": "^2.2.1"
+  }
+}

@@ -1,0 +1,1 @@
+/* Main entry point of JS code. */
