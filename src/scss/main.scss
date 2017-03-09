@@ -11,4 +11,7 @@
 @import 'pages/module';
 @import 'vendors/module';
 
+
+// The shame file must always be imported last. It's purpose is to
+// be able to override anything in a quick hacky, shameful, manner.
 @import 'shame';
