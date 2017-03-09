@@ -46,7 +46,8 @@ module.exports = {
 if (inProduction) {
     module.exports.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false }
+            compress: { warnings: false },
+            output: {comments: false}
         }),
         new OptimizeCssAssetsPlugin({
             cssProcessorOptions: { discardComments: { removeAll: true } }
