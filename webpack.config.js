@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require('path');
 var glob = require('glob');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var PurifyCSSPlugin = require('purifycss-webpack');
 
 var inProduction = (process.env.NODE_ENV === 'production');
@@ -47,7 +46,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('styles.css'),
-        new PurifyCSSPlugin({ paths: templatePaths })
+        new PurifyCSSPlugin({ paths: templatePaths, minimize: inProduction })
     ]
 };
 
@@ -57,9 +56,6 @@ if (inProduction) {
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false },
             output: {comments: false}
-        }),
-        new OptimizeCssAssetsPlugin({
-            cssProcessorOptions: { discardComments: { removeAll: true } }
         })
     );
 }
