@@ -6,13 +6,13 @@ var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var inProduction = (process.env.NODE_ENV === 'production');
 
 module.exports = {
-    entry: [
-        './src/js/main.js',
-        './src/scss/main.scss',
-    ],
+    entry: {
+      app: './src/js/main.js',
+      styles:  './src/scss/main.scss',
+    },
     output: {
         path: path.resolve(__dirname, './assets'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     module: {
         rules: [
@@ -38,7 +38,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('[name].css')
     ]
 };
 
