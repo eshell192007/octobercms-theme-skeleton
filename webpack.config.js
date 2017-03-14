@@ -1,18 +1,26 @@
 var webpack = require('webpack');
 var path = require('path');
+var glob = require('glob');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var PurifyCSSPlugin = require('purifycss-webpack');
 
 var inProduction = (process.env.NODE_ENV === 'production');
 
+var templatePaths = [].concat(
+  glob.sync(path.join(__dirname, 'layouts/**/*.htm')),
+  glob.sync(path.join(__dirname, 'partials/**/*.htm')),
+  glob.sync(path.join(__dirname, 'pages/**/*.htm'))
+);
+
 module.exports = {
-    entry: {
-      app: './src/js/main.js',
-      styles:  './src/scss/main.scss',
-    },
+    entry: [
+      './src/js/main.js',
+      './src/scss/main.scss',
+    ],
     output: {
         path: path.resolve(__dirname, './assets'),
-        filename: '[name].js'
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -38,7 +46,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('styles.css'),
+        new PurifyCSSPlugin({ paths: templatePaths })
     ]
 };
 
